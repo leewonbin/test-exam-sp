@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.gmj.sp.Gmj">
+		<select id="selectGmj" resultType="com.bdi.test.vo.GmjBVo">
+			select * from gmjbboard 
+			where gmjbboardno =#{gmjbboardno}
+		</select>
+		<select id="selectGmjList" resultType="com.bdi.test.vo.GmjBVo">
+			select * from gmjbboard
+		</select>
+		<insert id="insertGmj">
+			insert into gmjbboard(gmjbboardtitle,gmjbboarddesc,gmjbboardcredat,gmjbboardmoddat,gmjbboardcnt)
+			values(#{gmjbboardtitle},#{gmjbboarddesc},#{gmjbboardcredat},#{gmjbboardmoddat},#{gmjbboardcnt})
+		</insert>
+		<update id="updateGmj">
+			update gmjbboard
+			<set>
+				<if test="gmjbboardtitle!=null">gmjbboardtitle=#{gmjbboardtitle},</if>
+				<if test="gmjbboarddesc!=null">gmjbboarddesc=#{gmjbboarddesc},</if>
+				<if test="gmjbboardcredat!=null">gmjbboardcredat=#{gmjbboardcredat},</if>
+				<if test="gmjbboardmoddat!=null">gmjbboardmoddat=#{gmjbboardmoddat},</if>
+				<if test="gmjbboardcnt!=null">gmjbboardcnt=#{gmjbboardcnt}</if>
+			</set>
+			where gmjbboardno=#{gmjbboardno}
+		</update>
+		<delete id="deleteGmj">
+			delete from gmjbboard
+			where gmjbboardno=#{gmjbboardno}
+		</delete>
+	</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.gmj.sp.GmjAca">
+		<select id="selectGmjAcaList" resultType="com.bdi.test.vo.GmjAcaVo">
+			select * from gmjacademy
+		</select>
+		
+		<select id="selectGmjAca" resultType="com.bdi.test.vo.GmjAcaVo">
+			select * from gmjacademy
+			where gmjacademyno =#{gmjacademyno}
+		</select>
+		
+		<insert id="insertGmjAca">
+			insert into gmjacademy(gmjacademyname,gmjacademytitle,gmjacademydesc)
+			values(#{gmjacademyname},#{gmjacademytitle},#{gmjacademydesc})
+		</insert>
+		
+		<update id="updateGmjAca">
+			update gmjacademy
+			<set>
+				<if test="gmjacademyname!=null">gmjacademyname=#{gmjacademyname},</if>
+				<if test="gmjacademytitle!=null">gmjacademytitle=#{gmjacademytitle},</if>
+				<if test="gmjacademydesc!=null">gmjacademydesc=#{gmjacademydesc}</if>
+			</set>
+			where gmjacademyno=#{gmjacademyno}
+		</update>
+		
+		<delete id="deleteGmjAca">
+			delete from gmjacademy
+			where gmjacademyno=#{gmjacademyno}
+		</delete>
+	</mapper>
